@@ -2,7 +2,7 @@ import React from 'react';
 import {View, ImageBackground, StyleSheet, Dimensions} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
 import {TextBlock, Button} from './../../atoms';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
@@ -113,7 +113,7 @@ const AuthOptions: React.FC = () => {
                         backgroundColor={2}
                         size={7}
                         onPress={(): void => navigation.navigate('Login')}
-                        buttinWidth="53">
+                        buttonWidth="53">
                         <TextBlock
                             size={1.6}
                             weight="700"
@@ -127,7 +127,7 @@ const AuthOptions: React.FC = () => {
                         backgroundColor={1}
                         size={7}
                         onPress={(): void => navigation.navigate('Login')}
-                        buttinWidth="45">
+                        buttonWidth="45">
                         <TextBlock
                             size={1.6}
                             weight="700"

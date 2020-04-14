@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, {FC, ReactNode} from 'react';
 import {Dimensions, Platform, StatusBar} from 'react-native';
 import {isIphoneX} from 'react-native-iphone-x-helper';
 import styled, {css} from 'styled-components/native';
@@ -46,17 +46,16 @@ const C = styled.Text`
 `;
 // letter-spacing: 2;
 interface Props {
-    children: ReactNode;
-    family: string;
-    size: number;
-    colorNumber: number;
-    lheight: number;
-    weight: string;
-    color: string;
-    letterSpace: number;
+    family?: string;
+    size?: number;
+    colorNumber?: number;
+    lheight?: number;
+    weight?: string;
+    color?: string;
+    letterSpace?: number;
 }
 
-const TextBlock = (props: Props): JSX.Element => {
+const TextBlock: FC<Props> = (props) => {
     const {
         children,
         family,
@@ -86,9 +85,8 @@ const TextBlock = (props: Props): JSX.Element => {
 TextBlock.defaultProps = {
     family: 'Intro',
     size: 10,
-    lheight: 0,
+    lheight: 20,
     weight: '400',
-    color: null,
     letterSpace: 0,
     colorNumber: 0,
 };

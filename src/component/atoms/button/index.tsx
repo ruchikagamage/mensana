@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, {FC, ReactNode} from 'react';
 import {Dimensions, Platform, StatusBar, StyleSheet} from 'react-native';
 import {isIphoneX} from 'react-native-iphone-x-helper';
 import styled, {css} from 'styled-components/native';
@@ -33,7 +33,7 @@ const applyHeight = ({size = 0}): string => {
 const applybackground = ({backgroundColor = 0}): number =>
     palette('button', backgroundColor, false);
 
-const applyWidth = ({buttinWidth = 100}): string => buttinWidth + '%';
+const applyWidth = ({buttonWidth = 100}): string => `${buttonWidth}%`;
 
 const style = css`
     height: ${applyHeight};
@@ -49,20 +49,19 @@ const C = styled.View`
 `;
 // letter-spacing: 2;
 interface Props {
-    children: ReactNode;
-    size: number;
-    backgroundColor: number;
-    buttinWidth: string;
+    size?: number;
+    backgroundColor?: number;
+    buttonWidth?: string | number;
     onPress: Function;
-    rippleColor: string;
+    rippleColor?: string;
 }
 
-const Button = (props: Props): JSX.Element => {
+export const Button: FC<Props> = (props) => {
     const {
         children,
         size,
         backgroundColor,
-        buttinWidth,
+        buttonWidth,
         onPress,
         rippleColor,
     } = props;
@@ -71,7 +70,7 @@ const Button = (props: Props): JSX.Element => {
         <C
             size={size}
             backgroundColor={backgroundColor}
-            buttinWidth={buttinWidth}>
+            buttonWidth={buttonWidth}>
             <Ripple
                 rippleColor={rippleColor ? rippleColor : 'rgb(0, 0, 0)'}
                 rippleDuration={600}
@@ -82,11 +81,10 @@ const Button = (props: Props): JSX.Element => {
         </C>
     );
 };
-export {Button};
 
 Button.defaultProps = {
     size: 10,
-    buttinWidth: 100,
+    buttonWidth: 100,
     backgroundColor: 0,
     rippleColor: 'rgb(0, 0, 0)',
 };
