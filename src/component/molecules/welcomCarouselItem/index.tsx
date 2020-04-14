@@ -1,5 +1,5 @@
-import React from 'react';
-import {StyleSheet, View, Dimensions} from 'react-native';
+import React, {useMemo} from 'react';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import {TextBlock} from './../../atoms/textBlock';
 import WelCome from './../../asset/svgBackground/welocme';
 import What from './../../asset/svgBackground/what';
@@ -9,76 +9,56 @@ import AuthOptions from './../../organisms/authOptions';
 const {width, height} = Dimensions.get('window');
 
 export interface FlatListItem {
-    title: string;
-    titleExtend?: string;
-    subTitle: string;
-    discription: string;
-    // component: ReactNode;
-    id: number;
+  title: string;
+  titleExtend?: string;
+  subTitle: string;
+  discription: string;
+  // component: ReactNode;
+  id: number;
 }
 
 interface WelcomeProps {
-    item: FlatListItem;
+  item: FlatListItem;
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#004FC4',
-        width: width,
-        height: height,
-    },
-    textBox: {
-        paddingHorizontal: 30,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#004FC4',
+    width: width,
+    height: height,
+  },
+  textBox: {
+    paddingHorizontal: 30,
+  },
 });
 
+const pages = [WelCome, What, Why, AuthOptions];
+
 const WelcomeCarouselItem: React.FC<WelcomeProps> = (props) => {
-    return (
-        <View style={styles.container}>
-            {props.item.id === 1 ? (
-                <WelCome />
-            ) : props.item.id === 2 ? (
-                <What />
-            ) : props.item.id === 3 ? (
-                <Why />
-            ) : (
-                <AuthOptions />
-            )}
-            {props.item.title ? (
-                <View style={styles.textBox}>
-                    <TextBlock
-                        family="secondry"
-                        size={3}
-                        colorNumber={0}
-                        lheight={50}>
-                        {props.item.title}
-                    </TextBlock>
-                    <TextBlock
-                        family="secondry"
-                        size={3}
-                        colorNumber={0}
-                        lheight={30}>
-                        {props.item.titleExtend}
-                    </TextBlock>
-                    <TextBlock
-                        size={2.2}
-                        lheight={40}
-                        weight="600"
-                        colorNumber={0}>
-                        {props.item.subTitle}
-                    </TextBlock>
-                    <TextBlock
-                        size={2.2}
-                        weight="400"
-                        lheight={20}
-                        colorNumber={0}>
-                        {props.item.discription}
-                    </TextBlock>
-                </View>
-            ) : null}
-        </View>
-    );
+  const {item} = props;
+  const Page = useMemo(() => pages[item.id], [item.id]);
+  return (
+    <View style={styles.container}>
+      <Page />
+      <View style={styles.textBox}>
+        <TextBlock family="secondry" size={3} lheight={50}>
+          {item.title}
+        </TextBlock>
+        {item.titleExtend && (
+          <TextBlock family="secondry" size={3} lheight={30}>
+            {item.titleExtend}
+          </TextBlock>
+        )}
+        <TextBlock size={2.2} lheight={40} weight="600">
+          {item.subTitle}
+        </TextBlock>
+        <TextBlock size={2.2} weight="400" lheight={20}>
+          {item.discription}
+        </TextBlock>
+      </View>
+    </View>
+  );
 };
 
 export default WelcomeCarouselItem;
