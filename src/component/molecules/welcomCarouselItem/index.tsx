@@ -1,10 +1,6 @@
-import React, {useMemo} from 'react';
+import React, {ComponentType} from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
-import {TextBlock} from './../../atoms/textBlock';
-import WelCome from './../../asset/svgBackground/welocme';
-import What from './../../asset/svgBackground/what';
-import Why from './../../asset/svgBackground/why';
-import AuthOptions from './../../organisms/authOptions';
+import {TextBlock} from '../../atoms/textBlock';
 
 const {width, height} = Dimensions.get('window');
 
@@ -12,9 +8,8 @@ export interface FlatListItem {
   title: string;
   titleExtend?: string;
   subTitle: string;
-  discription: string;
-  // component: ReactNode;
-  id: number;
+  description: string;
+  component: ComponentType;
 }
 
 interface WelcomeProps {
@@ -33,11 +28,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const pages = [WelCome, What, Why, AuthOptions];
-
 const WelcomeCarouselItem: React.FC<WelcomeProps> = (props) => {
   const {item} = props;
-  const Page = useMemo(() => pages[item.id], [item.id]);
+  const Page = item.component;
   return (
     <View style={styles.container}>
       <Page />
@@ -54,7 +47,7 @@ const WelcomeCarouselItem: React.FC<WelcomeProps> = (props) => {
           {item.subTitle}
         </TextBlock>
         <TextBlock size={2.2} weight="400" lheight={20}>
-          {item.discription}
+          {item.description}
         </TextBlock>
       </View>
     </View>

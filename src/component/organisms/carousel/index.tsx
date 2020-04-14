@@ -1,6 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {View, StyleSheet, FlatList, Dimensions, Animated} from 'react-native';
 import WelcomeCarouselItem, {FlatListItem} from './../../molecules/welcomCarouselItem';
+import Welcome from '../../asset/svgBackground/welocme';
+import What from '../../asset/svgBackground/what';
+import Why from '../../asset/svgBackground/why';
+import AuthOptions from '../authOptions';
 
 const {width} = Dimensions.get('window');
 
@@ -26,36 +30,36 @@ export const data: FlatListItem[] = [
     title: 'Welcome ',
     titleExtend: 'to MENSANA',
     subTitle: 'Nunc vel rhoncus nibh, ut tincidunt',
-    discription:
+    component: Welcome,
+    description:
       'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque. Ut porta viverra est, ut dignissim.',
-    id: 0,
   },
   {
     title: 'What Mensana do ?',
     subTitle: 'Nunc vel rhoncus nibh, ut tincidunt',
-    discription:
+    component: What,
+    description:
       'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque. Ut porta viverra est, ut dignissim.',
-    id: 1,
   },
   {
     title: 'Why Join ?',
     subTitle: 'Nunc vel rhoncus nibh, ut tincidunt',
-    discription:
+    component: Why,
+    description:
       'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque. Ut porta viverra est, ut dignissim.',
-    id: 2,
   },
   {
     title: '',
     subTitle: '',
-    discription: '',
-    id: 3,
+    component: AuthOptions,
+    description: '',
   },
 ];
 
 const Carousel: React.FC = () => {
   const scrollX = new Animated.Value(0);
   const position = Animated.divide(scrollX, width);
-  const [dataList, setDataList] = useState(data);
+  // const [dataList, setDataList] = useState<FlatListItem[]>([data]);
   const [slideNumber, updateSlideNumber] = useState(null);
 
   const getScreenIndex = useCallback(({viewableItems}) => {
@@ -66,9 +70,9 @@ const Carousel: React.FC = () => {
     itemVisiblePercentThreshold: 50,
   };
 
-  useEffect(() => {
-    setDataList(data);
-  }, [dataList]);
+  // useEffect(() => {
+  //   setDataList(data);
+  // }, []);
   if (data && data.length) {
     return (
       <View>
