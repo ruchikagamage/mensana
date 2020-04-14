@@ -54,7 +54,7 @@ export const data: FlatListItem[] = [
     },
 ];
 
-const Carousel: React.FC = (props: object) => {
+const Carousel: React.FC = () => {
     const scrollX = new Animated.Value(0);
     const position = Animated.divide(scrollX, width);
     const [dataList, setDataList] = useState(data);
@@ -88,12 +88,7 @@ const Carousel: React.FC = (props: object) => {
                     keyExtractor={(item, index) => 'key' + index}
                     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
                     renderItem={({item}) => {
-                        return (
-                            <WelcomeCarouselItem
-                                navigation={props.navigation}
-                                item={item}
-                            />
-                        );
+                        return <WelcomeCarouselItem item={item} />;
                     }}
                     bounces={false}
                     directionalLockEnabled={true}

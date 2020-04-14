@@ -45,7 +45,7 @@ const C = styled.Text`
     ${style};
 `;
 // letter-spacing: 2;
-export interface Props {
+interface Props {
     children: ReactNode;
     family: string;
     size: number;

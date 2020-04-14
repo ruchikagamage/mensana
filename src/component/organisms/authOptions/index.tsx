@@ -2,6 +2,7 @@ import React from 'react';
 import {View, ImageBackground, StyleSheet, Dimensions} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
 import {TextBlock, Button} from './../../atoms';
+import { useNavigation } from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
@@ -52,12 +53,13 @@ const styles = StyleSheet.create({
 
 // }
 
-interface NProps {
-    navigation: NavigationScreenProp<any>;
-    // userProfile: IUserProfile;
-}
+// interface NProps {
+//     navigation: NavigationScreenProp<any>;
+//     // userProfile: IUserProfile;
+// }
 
-const AuthOptions: React.FC<NProps> = (props) => {
+const AuthOptions: React.FC = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -95,7 +97,7 @@ const AuthOptions: React.FC<NProps> = (props) => {
                 <Button
                     backgroundColor={3}
                     size={7}
-                    onPress={(): void => props.navigation.navigate('Login')}
+                    onPress={(): void => navigation.navigate('Login')}
                     rippleColor="#FF5400">
                     <TextBlock
                         size={2.5}
@@ -110,7 +112,7 @@ const AuthOptions: React.FC<NProps> = (props) => {
                     <Button
                         backgroundColor={2}
                         size={7}
-                        onPress={(): void => props.navigation.navigate('Login')}
+                        onPress={(): void => navigation.navigate('Login')}
                         buttinWidth="53">
                         <TextBlock
                             size={1.6}
@@ -124,7 +126,7 @@ const AuthOptions: React.FC<NProps> = (props) => {
                     <Button
                         backgroundColor={1}
                         size={7}
-                        onPress={(): void => props.navigation.navigate('Login')}
+                        onPress={(): void => navigation.navigate('Login')}
                         buttinWidth="45">
                         <TextBlock
                             size={1.6}

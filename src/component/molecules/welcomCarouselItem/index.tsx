@@ -19,7 +19,6 @@ export interface FlatListItem {
 
 interface WelcomeProps {
     item: FlatListItem;
-    navigation: string;
 }
 
 const styles = StyleSheet.create({
@@ -44,7 +43,7 @@ const WelcomeCarouselItem: React.FC<WelcomeProps> = (props) => {
             ) : props.item.id === 3 ? (
                 <Why />
             ) : (
-                <AuthOptions navigation={props.navigation} />
+                <AuthOptions />
             )}
             {props.item.title ? (
                 <View style={styles.textBox}>

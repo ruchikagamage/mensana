@@ -48,7 +48,7 @@ const C = styled.View`
     ${style};
 `;
 // letter-spacing: 2;
-export interface Props {
+interface Props {
     children: ReactNode;
     size: number;
     backgroundColor: number;
