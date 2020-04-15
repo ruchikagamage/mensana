@@ -10,47 +10,26 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
-import theme from './theme/default';
 import {YellowBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-
-import Welcome from './src/component/screens/welcome';
-import Login from './src/component/screens//login';
-// import Registration from './src/component/screens/registration';
+import {Provider as PaperProvider} from 'react-native-paper';
+import RootNavigation from './src/component/navigation/rootNavigation';
+import theme from './themes/default';
+import themePaper from './themes/paper';
 
 // declare var global: {HermesInternal: null | {}};
 YellowBox.ignoreWarnings(['Require cycle:', 'Warning: Async Storage']);
 
-type RootStackParamList = {
-    Welcome: undefined;
-    Login: undefined;
-};
-const Stack = createStackNavigator<RootStackParamList>();
-
 const App = (): Element => {
-    return (
-        <ThemeProvider theme={theme}>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Welcome">
-                    <Stack.Screen
-                        options={{
-                            headerShown: false,
-                        }}
-                        name="Welcome"
-                        component={Welcome}
-                    />
-                    <Stack.Screen
-                        options={{
-                            headerShown: true,
-                        }}
-                        name="Login"
-                        component={Login}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </ThemeProvider>
-    );
+  return (
+    <PaperProvider theme={themePaper}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+      </ThemeProvider>
+    </PaperProvider>
+  );
 };
 
 export default App;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {View, StyleSheet, FlatList, Dimensions, Animated} from 'react-native';
 import WelcomeCarouselItem, {FlatListItem} from './../../molecules/welcomCarouselItem';
 import Welcome from '../../asset/svgBackground/welocme';

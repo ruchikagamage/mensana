@@ -1,7 +1,7 @@
 import React from 'react';
-import AuthOptions from './../../organisms/authOptions';
+import AuthOptions from '../../organisms/authOptions';
 const Landing: React.FC = () => {
-    return <AuthOptions />;
+  return <AuthOptions />;
 };
 
 export default Landing;

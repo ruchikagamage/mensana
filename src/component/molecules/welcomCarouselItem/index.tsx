@@ -35,18 +35,18 @@ const WelcomeCarouselItem: React.FC<WelcomeProps> = (props) => {
     <View style={styles.container}>
       <Page />
       <View style={styles.textBox}>
-        <TextBlock family="secondry" size={3} lheight={50}>
+        <TextBlock family="secondry" size={3.3} lheight={50}>
           {item.title}
         </TextBlock>
         {item.titleExtend && (
-          <TextBlock family="secondry" size={3} lheight={30}>
+          <TextBlock family="secondry" size={3.3} lheight={40}>
             {item.titleExtend}
           </TextBlock>
         )}
-        <TextBlock size={2.2} lheight={40} weight="600">
+        <TextBlock size={2.2} lheight={50} weight="600">
           {item.subTitle}
         </TextBlock>
-        <TextBlock size={2.2} weight="400" lheight={20}>
+        <TextBlock size={2.2} weight="400" lheight={25}>
           {item.description}
         </TextBlock>
       </View>

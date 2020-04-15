@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, KeyboardAvoidingView, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {TextBlock, HorizontalBreak} from './../../atoms';
+// import {TextBlock, HorizontalBreak} from './../../atoms';
 import AuthHead from './../../molecules/authHead';
-import RegistrationForm from './../../organisms/registrationForm';
+import ForgotPasswordForm from './../../organisms/forgotPasswordForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,21 +26,21 @@ const styles = StyleSheet.create({
     bottom: 50,
     paddingHorizontal: 15,
   },
-  form: {alignItems: 'center', width: '100%', marginTop: 30},
+  form: {alignItems: 'center', width: '100%', marginTop: 40},
   brand: {alignItems: 'center', width: '100%', marginTop: -150},
 });
 
-const Registration: React.FC = () => {
+const Login: React.FC = () => {
   const navigation = useNavigation();
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <View style={styles.brand}>
-        <AuthHead heading="SIGN UP" />
+        <AuthHead heading="Forgot Password ?" subHeading="Retrieve your password" />
       </View>
       <View style={styles.form}>
-        <RegistrationForm navigation={navigation} />
-        {/* <HorizontalBreak size={20} /> */}
-        {/* <TouchableOpacity>
+        <ForgotPasswordForm navigation={navigation} />
+        {/* <HorizontalBreak size={20} />
+        <TouchableOpacity>
           <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={20}>
             Forgot your password?
           </TextBlock>
@@ -56,4 +56,4 @@ const Registration: React.FC = () => {
   );
 };
 
-export default Registration;
+export default Login;
