@@ -27,11 +27,14 @@ const applyHeight = ({size = 0}): string => {
   return Math.round(heightPercent) + 'px';
 };
 
-const applybackground = ({backgroundColor = 0}): number => palette('button', backgroundColor, false);
+const applybackground = ({backgroundColor = 0, border = false}): number =>
+  border === true ? 'transparent' : palette('button', backgroundColor, false);
 
 const applyWidth = ({buttonWidth = 100}): string => `${buttonWidth}%`;
 
 const applyBorderRadius = ({radius = 5}): string => `${radius}px`;
+
+const applyBorderColor = ({backgroundColor = 0}): string => palette('button', backgroundColor, false);
 
 const style = css`
   height: ${applyHeight};
@@ -40,6 +43,7 @@ const style = css`
   justify-content: center;
   align-items: center;
   border-radius: ${applyBorderRadius};
+  border: 2px solid ${applyBorderColor};
 `;
 
 const C = styled.View`
@@ -53,18 +57,20 @@ interface Props {
   onPress?: Function;
   rippleColor?: string;
   radius?: number;
+  border?: boolean;
 }
 
 export const Button: FC<Props> = (props) => {
-  const {children, size, backgroundColor, buttonWidth, onPress, rippleColor, radius} = props;
+  const {children, size, backgroundColor, buttonWidth, onPress, rippleColor, radius, border} = props;
 
   return (
-    <C size={size} backgroundColor={backgroundColor} buttonWidth={buttonWidth} radius={radius}>
+    <C size={size} backgroundColor={backgroundColor} buttonWidth={buttonWidth} radius={radius} border={border}>
       <Ripple
         rippleColor={rippleColor ? rippleColor : 'rgb(0, 0, 0)'}
         rippleDuration={600}
         onPress={onPress}
         radius={radius}
+        border={border}
         style={styles.block}>
         {children}
       </Ripple>

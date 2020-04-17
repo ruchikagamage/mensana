@@ -3,6 +3,7 @@ import {View, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity} from
 import {useNavigation} from '@react-navigation/native';
 import {TextBlock, HorizontalBreak} from './../../atoms';
 import AuthHead from './../../molecules/authHead';
+import TermsAndPolicy from './../../molecules/termsAndPolicy';
 import LoginForm from './../../organisms/loginForm';
 
 const styles = StyleSheet.create({
@@ -23,11 +24,11 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 0,
     right: 0,
-    bottom: 50,
+    bottom: 30,
     paddingHorizontal: 15,
   },
   form: {alignItems: 'center', width: '100%', marginTop: 30},
-  brand: {alignItems: 'center', width: '100%', marginTop: -150},
+  brand: {alignItems: 'center', width: '100%', marginTop: -120},
 });
 
 const Login: React.FC = () => {
@@ -47,10 +48,7 @@ const Login: React.FC = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.details}>
-        <TextBlock size={1.8} weight="400" colorNumber={1} letterSpace={0}>
-          By continuing, you agree to Mensana’s Terms of Service. We will manage information about as described in our
-          Privacy Policy and Cookie Policy.
-        </TextBlock>
+        <TermsAndPolicy />
       </View>
     </KeyboardAvoidingView>
   );

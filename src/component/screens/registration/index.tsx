@@ -1,9 +1,13 @@
 import React from 'react';
-import {View, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {TextBlock, HorizontalBreak} from './../../atoms';
+import {Button, TextBlock, Link} from './../../atoms';
 import AuthHead from './../../molecules/authHead';
+import TermsAndPolicy from './../../molecules/termsAndPolicy';
 import RegistrationForm from './../../organisms/registrationForm';
+import {Facebook} from '../../asset/icons';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+const {height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFF',
     paddingHorizontal: 15,
     width: '100%',
+    height: height,
   },
   details: {
     textAlign: 'right',
@@ -23,36 +28,69 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 0,
     right: 0,
-    bottom: 50,
+    bottom: 20,
     paddingHorizontal: 15,
   },
-  form: {alignItems: 'center', width: '100%', marginTop: 30},
-  brand: {alignItems: 'center', width: '100%', marginTop: -150},
+  form: {alignItems: 'center', width: '100%', marginTop: 20},
+  brand: {alignItems: 'center', width: '100%', marginTop: 40},
+  navOptions: {
+    marginTop: 30,
+    width: '100%',
+  },
+  facebookLink: {
+    flexDirection: 'row',
+    width: '100%',
+  },
+  signIn: {
+    marginTop: 20,
+  },
 });
 
 const Registration: React.FC = () => {
   const navigation = useNavigation();
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-      <View style={styles.brand}>
-        <AuthHead heading="SIGN UP" />
+    // <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
+    <KeyboardAwareScrollView>
+      <View style={styles.container}>
+        <View style={styles.brand}>
+          <AuthHead heading="SIGN UP" />
+        </View>
+        <View style={styles.form}>
+          <RegistrationForm navigation={navigation} />
+        </View>
+        <View style={styles.navOptions}>
+          <View style={styles.facebookLink}>
+            <Facebook />
+            <Link>
+              <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={24}>
+                {' '}
+                Connect with Facebook
+              </TextBlock>
+            </Link>
+          </View>
+          <View style={styles.signIn}>
+            <TextBlock
+              family="primary"
+              align="center"
+              letterSpace={0}
+              size={2}
+              weight="600"
+              colorNumber={1}
+              lheight={30}>
+              Already have Greg account ?
+            </TextBlock>
+            <Button border={true} backgroundColor={4} size={7} onPress={(): void => navigation.navigate('Login')}>
+              <TextBlock size={2.5} weight="700" colorNumber={3} letterSpace={1}>
+                SIGN IN
+              </TextBlock>
+            </Button>
+          </View>
+        </View>
+        <View style={styles.details}>
+          <TermsAndPolicy />
+        </View>
       </View>
-      <View style={styles.form}>
-        <RegistrationForm navigation={navigation} />
-        {/* <HorizontalBreak size={20} /> */}
-        {/* <TouchableOpacity>
-          <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={20}>
-            Forgot your password?
-          </TextBlock>
-        </TouchableOpacity> */}
-      </View>
-      {/* <View style={styles.details}>
-        <TextBlock size={1.8} weight="400" colorNumber={1} letterSpace={0}>
-          By continuing, you agree to Mensana’s Terms of Service. We will manage information about as described in our
-          Privacy Policy and Cookie Policy.
-        </TextBlock>
-      </View> */}
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 

@@ -49,10 +49,9 @@ const RegistrationRoute = () => {
     <>
       <Stack.Navigator
         screenOptions={{
-          header: () => <Header />,
+          headerShown: false,
         }}>
         <Stack.Screen name="Registration" component={Registration} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       </Stack.Navigator>
     </>
   );

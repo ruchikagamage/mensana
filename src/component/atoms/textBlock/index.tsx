@@ -28,6 +28,8 @@ const applyWeight = ({weight = '400'}): string => weight;
 
 const applySpace = ({letterSpace = 1}): string => letterSpace + 'px';
 
+const applyTextAlign = ({align = 'left'}): string => align;
+
 const style = css`
   color: ${applyFontColor};
   font-family: ${applyFontfamily};
@@ -35,6 +37,7 @@ const style = css`
   line-height: ${applyLineHeight};
   font-weight: ${applyWeight};
   letter-spacing: ${applySpace};
+  text-align: ${applyTextAlign};
 `;
 
 const C = styled.Text`
@@ -50,10 +53,11 @@ interface Props {
   weight?: string;
   color?: string;
   letterSpace?: number;
+  align?: string;
 }
 
 const TextBlock: FC<Props> = (props) => {
-  const {children, family, size, colorNumber, lheight, weight, color, letterSpace} = props;
+  const {children, family, size, colorNumber, lheight, weight, color, letterSpace, align} = props;
 
   // console.log(props);
   return (
@@ -64,6 +68,7 @@ const TextBlock: FC<Props> = (props) => {
       weight={weight}
       color={color}
       colorNumber={colorNumber}
+      align={align}
       lheight={lheight}>
       {children}
     </C>
