@@ -42,7 +42,7 @@ const Login: React.FC = () => {
         <LoginForm navigation={navigation} />
         <HorizontalBreak size={20} />
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-          <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={20}>
+          <TextBlock family="primary" letterSpace={0} size={2} weight="700" colorNumber={1} lheight={20}>
             Forgot your password?
           </TextBlock>
         </TouchableOpacity>

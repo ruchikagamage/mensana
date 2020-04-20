@@ -24,7 +24,7 @@ const deviceHeight = isIphoneX() || Platform.OS === 'android' ? standardLength -
 
 const applyHeight = ({size = 0}): string => {
   const heightPercent = (size * deviceHeight) / 100;
-  return Math.round(heightPercent) + 'px';
+  return Platform.OS === 'ios' ? Math.round(heightPercent) + 'px' : Math.round(heightPercent) + 10 + 'px';
 };
 
 const applybackground = ({backgroundColor = 0, border = false}): number =>

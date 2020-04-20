@@ -10,7 +10,7 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
-import {YellowBox} from 'react-native';
+import {YellowBox, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import RootNavigation from './src/component/navigation/rootNavigation';
@@ -24,6 +24,7 @@ const App = (): Element => {
   return (
     <PaperProvider theme={themePaper}>
       <ThemeProvider theme={theme}>
+        <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
         <NavigationContainer>
           <RootNavigation />
         </NavigationContainer>

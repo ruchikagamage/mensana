@@ -10,6 +10,9 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const {height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  keyboarAvoid: {
+    backgroundColor: '#FFF',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -17,22 +20,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFF',
     paddingHorizontal: 15,
     width: '100%',
-    height: height,
+    // height: height,
+    paddingBottom: 50,
+    paddingTop: 100,
   },
   details: {
     textAlign: 'right',
     flexDirection: 'row',
     justifyContent: 'center',
-    position: 'absolute',
+    // position: 'absolute',
     alignItems: 'center',
-    flex: 1,
     left: 0,
     right: 0,
-    bottom: 20,
+    // bottom: -50,
     paddingHorizontal: 15,
+    marginTop: 30,
   },
   form: {alignItems: 'center', width: '100%', marginTop: 20},
-  brand: {alignItems: 'center', width: '100%', marginTop: 40},
+  brand: {alignItems: 'center', width: '100%'},
   navOptions: {
     marginTop: 30,
     width: '100%',
@@ -50,7 +55,7 @@ const Registration: React.FC = () => {
   const navigation = useNavigation();
   return (
     // <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView style={styles.keyboarAvoid}>
       <View style={styles.container}>
         <View style={styles.brand}>
           <AuthHead heading="SIGN UP" />
@@ -62,7 +67,7 @@ const Registration: React.FC = () => {
           <View style={styles.facebookLink}>
             <Facebook />
             <Link>
-              <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={24}>
+              <TextBlock family="primary" letterSpace={0} size={2} weight="700" colorNumber={1} lheight={24}>
                 {' '}
                 Connect with Facebook
               </TextBlock>
@@ -74,7 +79,7 @@ const Registration: React.FC = () => {
               align="center"
               letterSpace={0}
               size={2}
-              weight="600"
+              weight="700"
               colorNumber={1}
               lheight={30}>
               Already have Greg account ?

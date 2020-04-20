@@ -16,7 +16,7 @@ const applyFontfamily = ({family = 'Inter'}): string => (family === 'secondry' ?
 
 const applyFontSize = ({size = 0}): string => {
   const heightPercent = (size * deviceHeight) / 100;
-  return Math.round(heightPercent) + 'px';
+  return Platform.OS === 'ios' ? Math.round(heightPercent) + 'px' : Math.round(heightPercent) + 3 + 'px';
 };
 
 const applyFontColor = ({colorNumber = 0, color = null}): number =>

@@ -12,10 +12,10 @@ const AuthHead: React.FC<Props> = ({heading, subHeading}) => {
     <>
       <Logo />
       <HorizontalBreak size={20} />
-      <TextBlock family="primary" letterSpace={0} size={4} weight="600" colorNumber={1} lheight={0}>
+      <TextBlock family="primary" letterSpace={0} size={4} weight="700" colorNumber={1} lheight={0}>
         {heading}
       </TextBlock>
-      <TextBlock family="primary" letterSpace={0} size={2} weight="600" colorNumber={1} lheight={30}>
+      <TextBlock family="primary" letterSpace={0} size={2} weight="700" colorNumber={1} lheight={30}>
         {subHeading}
       </TextBlock>
     </>
